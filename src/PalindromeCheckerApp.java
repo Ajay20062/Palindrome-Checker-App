@@ -28,5 +28,21 @@ public class PalindromeCheckerApp {
         System.out.println("       Application started successfully.      ");
         System.out.println("========================================================");
         System.out.println();
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+
+        System.out.println("========================================================");
+
+        System.out.println("UC2 - Half Loop            : " + checkHalfLoop(input));
+    }
+
+    // UC2 - Half Loop
+    public static boolean checkHalfLoop(String input) {
+        for (int i = 0; i < input.length() / 2; i++) {
+            if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
