@@ -2,10 +2,13 @@
 https://github.com/Ajay20062/Palindrome-Checker-App.git
 
 git config user.name
+
 git config user.email
 
 git config --global user.name "Ajay20062"
+
 git config --global user.email "70842623+Ajay20062@users.noreply.github.com"
+
 
 git init
 git branch -M main
@@ -18,7 +21,6 @@ git push origin main
 git checkout develop
 git checkout -b feature/UC2
 
-[ work on your use case task, Once Use case work completed then move to the next step ]
 
 💾 COMMIT
 git add .
