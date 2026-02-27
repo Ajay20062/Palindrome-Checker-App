@@ -15,15 +15,18 @@ git add .
 git commit -m "Base application setup"
 git push origin main
 
-Note: Ensure that main branch is pushed to remote GitHub repository
+git checkout develop
+git checkout -b feature/UC2
 
-Now:
-git checkout -b develop
-git push -u origin develop
+[ work on your use case task, Once Use case work completed then move to the next step ]
 
-git branch
-
-git checkout -b feature/UC1
+💾 COMMIT
 git add .
-git commit -m "UC1: Add welcome message module"
-git push origin feature/UC1
+git commit -m "UC2:Hardcoded palindrome "
+git push origin feature/UC2
+
+🔀 MERGE TO DEVELOP
+git checkout develop
+git pull
+git merge feature/UC2
+git push
