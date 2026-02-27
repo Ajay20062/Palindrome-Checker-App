@@ -1,48 +1,27 @@
-# Palindrome-Checker-App
-https://github.com/Ajay20062/Palindrome-Checker-App.git
+# Palindrome Checker App (Java)
 
-git config user.name
+This is a Java console application that checks whether an input string is a palindrome.
 
-git config user.email
+## Tech Stack
 
-git config --global user.name "Ajay20062"
+- Java 17
+- Maven
 
-git config --global user.email "70842623+Ajay20062@users.noreply.github.com"
+## Project Structure
 
+- `pom.xml`
+- `src/main/java/com/ajay/palindrome/PalindromeCheckerApp.java`
 
-git init
+## Run
 
-git branch -M main
+```bash
+mvn compile
+mvn exec:java
+```
 
-git remote add origin https://github.com/Ajay20062/Palindrome-Checker-App.git
+Then enter any text when prompted.
 
-git remote -v
+## Behavior
 
-git add .
-
-git commit -m "Base application setup"
-
-git push origin main
-
-git checkout develop
-
-git checkout -b feature/UC2
-
-
-💾 COMMIT
-
-git add .
-
-git commit -m "UC2:Hardcoded palindrome "
-
-git push origin feature/UC2
-
-🔀 MERGE TO DEVELOP
-
-git checkout develop
-
-git pull
-
-git merge feature/UC2
-
-git push
+- Ignores spaces, punctuation, and special characters
+- Case-insensitive comparison

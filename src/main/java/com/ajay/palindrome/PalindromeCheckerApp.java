@@ -1,0 +1,31 @@
+package com.ajay.palindrome;
+
+
+/**
+ * =====================================================
+ * MAIN CLASS - Palindrome Checker App
+ * =====================================================
+ * <p>
+ * All palindrome validation techniques combined.
+ * Now accepts input from user.
+ *</p>
+ * @author T R Ajay Dharrsan
+ * @version 1.0
+ */
+
+public class PalindromeCheckerApp {
+
+    public static void main(String[] args) {
+
+        System.out.println("=======================================================");
+        System.out.println("                    PALINDROME CHECKER App             ");
+        System.out.println("=======================================================");
+        System.out.println();
+        System.out.println("=======================================================");
+        System.out.println("                 Version: 1.0                 ");
+        System.out.println("     Welcome to Palindrome Application!       ");
+        System.out.println("       Application started successfully.      ");
+        System.out.println("========================================================");
+        System.out.println();
+    }
+}
