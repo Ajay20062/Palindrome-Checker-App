@@ -33,7 +33,8 @@ public class PalindromeCheckerApp {
 
         System.out.println("========================================================");
 
-        System.out.println("UC2 - Half Loop            : " + checkHalfLoop(input));
+        System.out.println("UC2 - Half Loop                 : " + checkHalfLoop(input));
+        System.out.println("UC3 - Reverse String            : " + checkReverse(input));
     }
 
     // UC2 - Half Loop
@@ -44,5 +45,13 @@ public class PalindromeCheckerApp {
             }
         }
         return true;
+    }
+    // UC3 - Reverse String
+    public static boolean checkReverse(String input) {
+        StringBuilder reversed = new StringBuilder();
+        for (int i = input.length() - 1; i >= 0; i--) {
+            reversed.append(input.charAt(i));
+        }
+        return input.contentEquals(reversed);
     }
 }
