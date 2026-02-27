@@ -5,7 +5,7 @@ git config user.name
 git config user.email
 
 git config --global user.name "Ajay20062"
-git config --global user.email "ajaydharrsan@gmail.com"
+git config --global user.email "70842623+Ajay20062@users.noreply.github.com"
 
 git init
 git branch -M main
