@@ -1,5 +1,7 @@
 import java.util.*;
 
+
+
 /**
  * =====================================================
  * MAIN CLASS - Palindrome Checker App
@@ -9,7 +11,7 @@ import java.util.*;
  * Now accepts input from user.
  *</p>
  * @author T R Ajay Dharrsan
- * @version 7.0
+ * @version 8.0
  */
 
 public class PalindromeCheckerApp {
@@ -23,7 +25,7 @@ public class PalindromeCheckerApp {
         System.out.println("=======================================================");
         System.out.println();
         System.out.println("=======================================================");
-        System.out.println("                 Version: 7.0                 ");
+        System.out.println("                 Version: 8.0                 ");
         System.out.println("     Welcome to Palindrome Application!       ");
         System.out.println("       Application started successfully.      ");
         System.out.println("========================================================");
@@ -40,7 +42,7 @@ public class PalindromeCheckerApp {
         System.out.println("UC5 - Stack                : " + checkStack(input));
         System.out.println("UC6 - Queue + Stack        : " + checkQueueStack(input));
         System.out.println("UC7 - Deque                : " + checkDeque(input));
-
+        System.out.println("UC8 - Linked List Based    : " + checkLinkedList(input));
         scanner.close();
     }
 
@@ -125,6 +127,26 @@ public class PalindromeCheckerApp {
                 return false;
             }
         }
+        return true;
+    }
+
+    // UC8 - Linked List Based (Using Java LinkedList)
+    public static boolean checkLinkedList(String input) {
+
+        LinkedList<Character> list = new LinkedList<>();
+
+        // Convert string to linked list
+        for (char c : input.toCharArray()) {
+            list.add(c);
+        }
+
+        // Compare first and last elements
+        while (list.size() > 1) {
+            if (!list.removeFirst().equals(list.removeLast())) {
+                return false;
+            }
+        }
+
         return true;
     }
 
