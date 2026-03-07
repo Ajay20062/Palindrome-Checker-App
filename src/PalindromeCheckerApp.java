@@ -43,6 +43,7 @@ public class PalindromeCheckerApp {
         System.out.println("UC6 - Queue + Stack        : " + checkQueueStack(input));
         System.out.println("UC7 - Deque                : " + checkDeque(input));
         System.out.println("UC8 - Linked List Based    : " + checkLinkedList(input));
+        System.out.println("UC9 - Recursive Palindrome : " + checkRecursivePalindrome(input));
         scanner.close();
     }
 
@@ -148,6 +149,24 @@ public class PalindromeCheckerApp {
         }
 
         return true;
+    }
+
+    // UC9 - Recursive Palindrome
+    public static boolean checkRecursivePalindrome(String input) {
+        return recursive(input, 0, input.length() - 1);
+    }
+
+    private static boolean recursive(String input, int start, int end) {
+
+        if (start >= end) {
+            return true;
+        }
+
+        if (input.charAt(start) != input.charAt(end)) {
+            return false;
+        }
+
+        return recursive(input, start + 1, end - 1);
     }
 
 }
