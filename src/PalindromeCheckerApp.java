@@ -23,7 +23,7 @@ public class PalindromeCheckerApp {
         System.out.println("=======================================================");
         System.out.println();
         System.out.println("=======================================================");
-        System.out.println("                 Version: 9.0                 ");
+        System.out.println("                 Version: 2.0                 ");
         System.out.println("     Welcome to Palindrome Application!       ");
         System.out.println("       Application started successfully.      ");
         System.out.println("========================================================");
