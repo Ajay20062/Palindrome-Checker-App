@@ -9,7 +9,7 @@ import java.util.*;
  * Now accepts input from user.
  *</p>
  * @author T R Ajay Dharrsan
- * @version 4.0
+ * @version 5.0
  */
 
 public class PalindromeCheckerApp {
@@ -23,7 +23,7 @@ public class PalindromeCheckerApp {
         System.out.println("=======================================================");
         System.out.println();
         System.out.println("=======================================================");
-        System.out.println("                 Version: 4.0                 ");
+        System.out.println("                 Version: 5.0                 ");
         System.out.println("     Welcome to Palindrome Application!       ");
         System.out.println("       Application started successfully.      ");
         System.out.println("========================================================");
@@ -37,6 +37,7 @@ public class PalindromeCheckerApp {
         System.out.println("UC2 - Half Loop            : " + checkHalfLoop(input));
         System.out.println("UC3 - Reverse String       : " + checkReverse(input));
         System.out.println("UC4 - Two Pointer          : " + checkTwoPointer(input));
+        System.out.println("UC5 - Stack                : " + checkStack(input));
 
         scanner.close();
     }
@@ -72,6 +73,21 @@ public class PalindromeCheckerApp {
             }
             start++;
             end--;
+        }
+        return true;
+    }
+
+    // UC5 - Stack
+    public static boolean checkStack(String input) {
+        Stack<Character> stack = new Stack<>();
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
+
+        for (char c : input.toCharArray()) {
+            if (c != stack.pop()) {
+                return false;
+            }
         }
         return true;
     }
