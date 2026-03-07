@@ -9,12 +9,12 @@ import java.util.*;
  * Now accepts input from user.
  *</p>
  * @author T R Ajay Dharrsan
- * @version 2.0
+ * @version 3.0
  */
 
 public class PalindromeCheckerApp {
 
-    static void main(String[] args) {
+    public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
 
@@ -23,7 +23,7 @@ public class PalindromeCheckerApp {
         System.out.println("=======================================================");
         System.out.println();
         System.out.println("=======================================================");
-        System.out.println("                 Version: 9.0                 ");
+        System.out.println("                 Version: 3.0                 ");
         System.out.println("     Welcome to Palindrome Application!       ");
         System.out.println("       Application started successfully.      ");
         System.out.println("========================================================");
@@ -35,7 +35,7 @@ public class PalindromeCheckerApp {
         System.out.println("========================================================");
 
         System.out.println("UC2 - Half Loop            : " + checkHalfLoop(input));
-
+        System.out.println("UC3 - Reverse String       : " + checkReverse(input));
         scanner.close();
     }
 
@@ -48,4 +48,14 @@ public class PalindromeCheckerApp {
         }
         return true;
     }
+
+    // UC3 - Reverse String
+    public static boolean checkReverse(String input) {
+        StringBuilder reversed = new StringBuilder();
+        for (int i = input.length() - 1; i >= 0; i--) {
+            reversed.append(input.charAt(i));
+        }
+        return input.contentEquals(reversed);
+    }
+
 }
