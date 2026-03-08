@@ -1,15 +1,14 @@
-import java.util.*;
 
+import java.util.*;
 /**
  * =====================================================
  * MAIN CLASS - Palindrome Checker App
  * =====================================================
  * All palindrome validation techniques combined.
  * Now accepts input from user.
- * UC10 added: Case-insensitive and space-ignored palindrome
  *
  * @author T R Ajay Dharrsan
- * @version 12.0
+ * @version 13.0
  */
 
 public class PalindromeCheckerApp {
@@ -18,42 +17,69 @@ public class PalindromeCheckerApp {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("=======================================================");
-        System.out.println("                PALINDROME CHECKER APP                 ");
-        System.out.println("=======================================================");
-        System.out.println("Version: 12.0");
-        System.out.println("Application Started Successfully!");
+        System.out.println("================================================================");
+        System.out.println("                    PALINDROME CHECKER APP                      ");
+        System.out.println("================================================================");
+        System.out.println("                Version: 13.0                                   ");
+        System.out.println("         Application Started Successfully!                      ");
         System.out.println();
+        System.out.println("================================================================");
 
-        System.out.print("Enter a string: ");
+        System.out.print("\nEnter a string : ");
         String input = scanner.nextLine();
 
-        System.out.println("=======================================================");
+        System.out.println("\n==============================================================");
 
-        System.out.println("UC2 - Half Loop                    : " + checkHalfLoop(input));
-        System.out.println("UC3 - Reverse String               : " + checkReverse(input));
-        System.out.println("UC4 - Two Pointer                  : " + checkTwoPointer(input));
-        System.out.println("UC5 - Stack                        : " + checkStack(input));
-        System.out.println("UC6 - Queue + Stack                : " + checkQueueStack(input));
-        System.out.println("UC7 - Deque                        : " + checkDeque(input));
-        System.out.println("UC8 - Linked List Based            : " + checkLinkedList(input));
-        System.out.println("UC9 - Recursive Palindrome         : " + checkRecursivePalindrome(input));
-        System.out.println("UC10 - Ignore Case & Space         : " + checkIgnoreCaseSpace(input));
+        System.out.printf("%-35s %-10s %-20s\n", "Method", "Result", "Execution Time");
+        System.out.println("----------------------------------------------------------------");
+
+        runAndMeasure("UC2  - Half Loop", () -> checkHalfLoop(input));
+        runAndMeasure("UC3  - Reverse String", () -> checkReverse(input));
+        runAndMeasure("UC4  - Two Pointer", () -> checkTwoPointer(input));
+        runAndMeasure("UC5  - Stack", () -> checkStack(input));
+        runAndMeasure("UC6  - Queue + Stack", () -> checkQueueStack(input));
+        runAndMeasure("UC7  - Deque", () -> checkDeque(input));
+        runAndMeasure("UC8  - Linked List", () -> checkLinkedList(input));
+        runAndMeasure("UC9  - Recursive", () -> checkRecursivePalindrome(input));
+        runAndMeasure("UC10 - Ignore Case & Space", () -> checkIgnoreCaseSpace(input));
 
         PalindromeService service = new PalindromeService();
-        System.out.println("UC11 - OOP Palindrome Service      : " + service.checkPalindrome(input));
+        runAndMeasure("UC11 - OOP Service", () -> service.checkPalindrome(input));
 
-        // UC12 Strategy Pattern
         PalindromeService.StackStrategy stackStrategy = new PalindromeService.StackStrategy();
         PalindromeService.DequeStrategy dequeStrategy = new PalindromeService.DequeStrategy();
 
-        System.out.println("UC12 - Strategy Pattern (Stack)    : " + stackStrategy.checkPalindrome(input));
-        System.out.println("UC12 - Strategy Pattern (Deque)    : " + dequeStrategy.checkPalindrome(input));
+        runAndMeasure("UC12 - Strategy (Stack)", () -> stackStrategy.checkPalindrome(input));
+        runAndMeasure("UC12 - Strategy (Deque)", () -> dequeStrategy.checkPalindrome(input));
 
         scanner.close();
     }
 
+    /**
+     * UC13 - Performance Measurement
+     */
+    public static void runAndMeasure(String methodName, PalindromeCheck check) {
+
+        long start = System.nanoTime();
+        boolean result = check.run();
+        long end = System.nanoTime();
+
+        long time = end - start;
+
+        System.out.printf("%-35s %-10s %-20d ns\n", methodName, result, time);
+    }
+
+    /**
+     * Functional Interface
+     */
+    public static interface PalindromeCheck {
+        boolean run();
+    }
+
+    // =====================================================
     // UC2 - Half Loop
+    // =====================================================
+
     public static boolean checkHalfLoop(String input) {
 
         for (int i = 0; i < input.length() / 2; i++) {
@@ -64,7 +90,10 @@ public class PalindromeCheckerApp {
         return true;
     }
 
+    // =====================================================
     // UC3 - Reverse String
+    // =====================================================
+
     public static boolean checkReverse(String input) {
 
         StringBuilder reversed = new StringBuilder();
@@ -73,20 +102,21 @@ public class PalindromeCheckerApp {
             reversed.append(input.charAt(i));
         }
 
-        return input.equals(reversed.toString());
+        return input.contentEquals(reversed);
     }
 
+    // =====================================================
     // UC4 - Two Pointer
+    // =====================================================
+
     public static boolean checkTwoPointer(String input) {
 
-        char[] chars = input.toCharArray();
-
         int start = 0;
-        int end = chars.length - 1;
+        int end = input.length() - 1;
 
         while (start < end) {
 
-            if (chars[start] != chars[end]) {
+            if (input.charAt(start) != input.charAt(end)) {
                 return false;
             }
 
@@ -97,7 +127,10 @@ public class PalindromeCheckerApp {
         return true;
     }
 
+    // =====================================================
     // UC5 - Stack
+    // =====================================================
+
     public static boolean checkStack(String input) {
 
         Stack<Character> stack = new Stack<>();
@@ -116,14 +149,16 @@ public class PalindromeCheckerApp {
         return true;
     }
 
+    // =====================================================
     // UC6 - Queue + Stack
+    // =====================================================
+
     public static boolean checkQueueStack(String input) {
 
         Queue<Character> queue = new LinkedList<>();
         Stack<Character> stack = new Stack<>();
 
         for (char c : input.toCharArray()) {
-
             queue.add(c);
             stack.push(c);
         }
@@ -138,7 +173,10 @@ public class PalindromeCheckerApp {
         return true;
     }
 
+    // =====================================================
     // UC7 - Deque
+    // =====================================================
+
     public static boolean checkDeque(String input) {
 
         Deque<Character> deque = new LinkedList<>();
@@ -157,7 +195,10 @@ public class PalindromeCheckerApp {
         return true;
     }
 
+    // =====================================================
     // UC8 - Linked List
+    // =====================================================
+
     public static boolean checkLinkedList(String input) {
 
         LinkedList<Character> list = new LinkedList<>();
@@ -176,9 +217,11 @@ public class PalindromeCheckerApp {
         return true;
     }
 
+    // =====================================================
     // UC9 - Recursive
-    public static boolean checkRecursivePalindrome(String input) {
+    // =====================================================
 
+    public static boolean checkRecursivePalindrome(String input) {
         return recursive(input, 0, input.length() - 1);
     }
 
@@ -195,7 +238,10 @@ public class PalindromeCheckerApp {
         return recursive(input, start + 1, end - 1);
     }
 
-    // UC10 - Ignore Case and Spaces
+    // =====================================================
+    // UC10 - Ignore Case & Space
+    // =====================================================
+
     public static boolean checkIgnoreCaseSpace(String input) {
 
         String normalized = input.replaceAll("\\s+", "").toLowerCase();
@@ -213,7 +259,7 @@ public class PalindromeCheckerApp {
 
 /**
  * =====================================================
- * UC11 - Object Oriented Palindrome Service
+ * UC11 - SERVICE CLASS (OOP)
  * =====================================================
  */
 
@@ -238,20 +284,15 @@ class PalindromeService {
     }
 
     /**
-     * =====================================================
-     * UC12 - Strategy Pattern Interface
-     * =====================================================
+     * Strategy Pattern Interface
      */
-
     interface PalindromeStrategy {
-
         boolean checkPalindrome(String input);
     }
 
     /**
      * Stack Strategy
      */
-
     static class StackStrategy implements PalindromeStrategy {
 
         public boolean checkPalindrome(String input) {
@@ -276,7 +317,6 @@ class PalindromeService {
     /**
      * Deque Strategy
      */
-
     static class DequeStrategy implements PalindromeStrategy {
 
         public boolean checkPalindrome(String input) {
