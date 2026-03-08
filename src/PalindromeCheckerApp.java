@@ -1,17 +1,15 @@
 import java.util.*;
 
-
-
 /**
  * =====================================================
  * MAIN CLASS - Palindrome Checker App
  * =====================================================
- * <p>
  * All palindrome validation techniques combined.
  * Now accepts input from user.
- *</p>
+ * UC10 added: Case-insensitive and space-ignored palindrome
+ *
  * @author T R Ajay Dharrsan
- * @version 9.0
+ * @version 10.0
  */
 
 public class PalindromeCheckerApp {
@@ -21,13 +19,13 @@ public class PalindromeCheckerApp {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("=======================================================");
-        System.out.println("               PALINDROME CHECKER App         ");
+        System.out.println("                   PALINDROME CHECKER App              ");
         System.out.println("=======================================================");
         System.out.println();
         System.out.println("=======================================================");
-        System.out.println("                 Version: 9.0                 ");
-        System.out.println("     Welcome to Palindrome Application!       ");
-        System.out.println("       Application started successfully.      ");
+        System.out.println("                   Version: 10.0                       ");
+        System.out.println("           Welcome to Palindrome Application!          ");
+        System.out.println("             Application started successfully.         ");
         System.out.println("========================================================");
         System.out.println();
 
@@ -44,6 +42,8 @@ public class PalindromeCheckerApp {
         System.out.println("UC7 - Deque                : " + checkDeque(input));
         System.out.println("UC8 - Linked List Based    : " + checkLinkedList(input));
         System.out.println("UC9 - Recursive Palindrome : " + checkRecursivePalindrome(input));
+        System.out.println("UC10 - Ignore Case & Space : " + checkIgnoreCaseSpace(input));
+
         scanner.close();
     }
 
@@ -115,7 +115,7 @@ public class PalindromeCheckerApp {
         return true;
     }
 
-    //UC:7 Deque
+    // UC7 - Deque
     public static boolean checkDeque(String input) {
         Deque<Character> deque = new LinkedList<>();
 
@@ -131,17 +131,15 @@ public class PalindromeCheckerApp {
         return true;
     }
 
-    // UC8 - Linked List Based (Using Java LinkedList)
+    // UC8 - Linked List Based
     public static boolean checkLinkedList(String input) {
 
         LinkedList<Character> list = new LinkedList<>();
 
-        // Convert string to linked list
         for (char c : input.toCharArray()) {
             list.add(c);
         }
 
-        // Compare first and last elements
         while (list.size() > 1) {
             if (!list.removeFirst().equals(list.removeLast())) {
                 return false;
@@ -167,6 +165,22 @@ public class PalindromeCheckerApp {
         }
 
         return recursive(input, start + 1, end - 1);
+    }
+
+    // UC10 - Ignore Case and Spaces
+    public static boolean checkIgnoreCaseSpace(String input) {
+
+        // Normalize string (remove spaces and convert to lowercase)
+        String normalized = input.replaceAll("\\s+", "").toLowerCase();
+
+        // Apply Half Loop logic
+        for (int i = 0; i < normalized.length() / 2; i++) {
+            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
 }
